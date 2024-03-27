@@ -1,0 +1,42 @@
+// SIMPLE CALCULATOR
+
+#include<iostream>
+using namespace std;
+int main(){
+    char s; int c; float num1,num2,ans;
+    cout<<"SIMPLE CALCULATOR\n";
+    cout<<"MENU\n1.ADD(+)\n2.SUBTRACT(-)\n3.MULTIPLICATION(*)\n4.DIVISION(/)\n";
+    cout<<"Enter the corresponding number to operation you want to perform:\t";
+    cin>>c;
+    system("CLS");
+    if(c<5) {
+    cout<<"Enter the first number:\t";
+    cin>>num1;
+    cout<<"Enter the second number:\t";
+    cin>>num2; }
+    switch(c) {
+    case 1:
+        ans=num1+num2;
+        cout<<num1 <<" + " <<num2 <<" = " <<ans;
+        break;
+    case 2:
+        ans=num1-num2;
+        cout<<num1 <<" - " <<num2 <<" = " <<ans;
+        break;
+    case 3:
+        ans=num1*num2;
+        cout<<num1 <<" * " <<num2 <<" = " <<ans;
+        break;
+    case 4:
+        if(num2==0)
+            cout<<"\nDivision By 0 is not allowed";
+        else {
+        ans=num1/num2;
+        cout<<num1 <<" / " <<num2 <<" = " <<ans; }
+        break;
+    default:
+        cout<<"Error: Wrong Operator";
+        break;
+        }
+    return 0;
+    }
