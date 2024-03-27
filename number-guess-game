@@ -1,0 +1,45 @@
+//NUMBER GUESS GAME
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+int guessnum();
+int main(){
+    int a,guess,counter=1; bool g=false;
+    cout<<"\t\tWelcome To The Number Guessing Game";
+    cout<<"\n\t\t===================================";
+    a=guessnum();
+    do{
+    cout<<"\nGuess a Number between 1 and 100:\t";
+    cin>>guess;
+    if(guess==a) {
+        system("CLS");
+            cout<<"\t\t";
+        for(int i=1;i<=50;i++)
+        cout<<"*";
+        cout<<"\n\t\tCongrats You guessed the Correct Number. \n\t\tThe Correct number was " <<a;
+        cout<<". You guessed in " <<counter <<" attempts\n\t\t";
+        for(int i=1;i<=50;i++)
+        cout<<"*";
+        g=false; }
+    else if(guess>a)
+    {
+        cout<<"\nYour Guessed Number is too High! Try Again.";
+        g=true;
+
+    }
+    else if(guess<a)
+    {
+        cout<<"\nYour Guessed Number is too Low! Try Again.";
+        g=true;
+    }
+    counter++;
+    }while(g);
+    return 0;
+}
+int guessnum() {
+    int num;
+    srand(time(NULL));
+    num= (rand()%100 + 1);
+    return num;
+    }
