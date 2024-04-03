@@ -1,0 +1,93 @@
+//Console based TO-Do-List using C++ 
+#include <iostream>
+#include<stdlib.h>
+#include<conio.h>
+#include<string>
+using namespace std;
+string tasks[100];
+int complete(int);
+int removetask(int);
+int menu();
+int main() {
+    int i=0;
+    int opt,choice;
+    start:
+    opt=menu();
+    system("CLS");
+    switch(opt){
+    case 1:
+        cout<<"\n1. Add Task";
+        cout<<"\nEnter the Task you want to add to the To Do List:\t";
+            cin.ignore();
+            getline(cin, tasks[i]);
+             i++;
+             system("CLS");
+             goto start;
+             break;
+    case 2:
+        cout<<"\n2. View/Manipulate Tasks\n";
+        if(i==0) {
+            cout<<"\n\nThe To-Do List is Empty :(\nAdd Tasks to view here.\n\n\nPress any key to go back to Menu\t";
+            getch();
+            system("CLS");
+            goto start; }
+        for(int j=0;j<i;j++){
+            cout<<"\n Task " <<j+1 <<" : " <<tasks[j];
+        }
+        cout<<"\n\n1. Mark Task as Completed\n2. Delete Task\n3. Go Back\n";
+        cout<<"Enter the option(1-3):\t";
+        cin>>choice;
+        while(choice>3) {
+            cout<<"Error! Wrong Option Please Enter the Number Corresponding to the task you want to Perform:\t";
+            cin>>choice; }
+        if(choice==1) {
+            complete(i);
+            system("CLS");
+            goto start; }
+        else if(choice==2){
+            removetask(i);
+            i--;
+            system("CLS");
+            goto start; }
+        else {
+            system("CLS");
+            goto start; }
+        break;
+    case 3:
+        cout<<"\n\n\t\tThanks! See You Again\n\n\n";
+        exit(0);
+        break;
+    default:
+        cout << "Invalid choice. Please try again.\n";
+        break;
+    }
+}
+int menu(){
+    int a;
+    cout<<"\n\t\t\t\t\t===============================\n\t\t\t\t\t\t    TO DO LIST\n\t\t\t\t\t===============================\n\n\n";
+    cout<<"1. Add Task\n2. View/ Manipulate Tasks\n3. Exit\n\n";
+    cout<<"Enter The Option(1-3):\t";
+    cin>>a;
+    while(a<1||a>3){
+        cout<<"Error! Please Enter the Number Corresponding to the task you want to Perform:\t";
+        cin>>a;
+    }
+        return a;
+}
+int complete(int m){ int c;
+    do{ cout<<"Enter the Task number You want to mark as completed:\t";
+    cin>>c;
+    }while(c>m);//2,
+        tasks[c-1]=tasks[c-1] + "\t\t Completed";
+        cout<<"\n\n\t\t Task Marked as Completed\n\t\tPress any key to go back to Menu";
+        getch();
+    }
+int removetask(int ma){ int c;
+    do{ cout<<"Enter the Task number You want to delete:\t";
+    cin>>c; } while(c>ma);
+    for(int i=c-1;i<=ma-1;i++){//c=5,ma=7,total=6,m-1=6 , i=4,i+1,i=5,6
+        tasks[i]=tasks[i+1];
+    }
+    cout<<"\n\n\t\tTask Deleted Succesfully!\n\t\tPress any key to go back to Menu";
+    getch();
+}
